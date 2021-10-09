@@ -1,0 +1,345 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\02-Projetos\\19.MatrixERP\\lemosinfotec.matrixerp\\lemosinfotec.matrixErp.UI\\lemosinfotec.matrixErp.UI.csproj": {}
+  },
+  "projects": {
+    "E:\\02-Projetos\\19.MatrixERP\\lemosinfotec.matrixerp\\lemosinfotec.matrixErp.Data\\lemosinfotec.matrixErp.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\02-Projetos\\19.MatrixERP\\lemosinfotec.matrixerp\\lemosinfotec.matrixErp.Data\\lemosinfotec.matrixErp.Data.csproj",
+        "projectName": "lemosinfotec.matrixErp.Data",
+        "projectPath": "E:\\02-Projetos\\19.MatrixERP\\lemosinfotec.matrixerp\\lemosinfotec.matrixErp.Data\\lemosinfotec.matrixErp.Data.csproj",
+        "packagesPath": "C:\\Users\\Edy\\.nuget\\packages\\",
+        "outputPath": "E:\\02-Projetos\\19.MatrixERP\\lemosinfotec.matrixerp\\lemosinfotec.matrixErp.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Edy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "E:\\02-Projetos\\19.MatrixERP\\lemosinfotec.matrixerp\\lemosinfotec.matrixerp.Domain\\lemosinfotec.matrixerp.Domain.csproj": {
+                "projectPath": "E:\\02-Projetos\\19.MatrixERP\\lemosinfotec.matrixerp\\lemosinfotec.matrixerp.Domain\\lemosinfotec.matrixerp.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.9, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\02-Projetos\\19.MatrixERP\\lemosinfotec.matrixerp\\lemosinfotec.matrixerp.Domain\\lemosinfotec.matrixerp.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\02-Projetos\\19.MatrixERP\\lemosinfotec.matrixerp\\lemosinfotec.matrixerp.Domain\\lemosinfotec.matrixerp.Domain.csproj",
+        "projectName": "lemosinfotec.matrixerp.Domain",
+        "projectPath": "E:\\02-Projetos\\19.MatrixERP\\lemosinfotec.matrixerp\\lemosinfotec.matrixerp.Domain\\lemosinfotec.matrixerp.Domain.csproj",
+        "packagesPath": "C:\\Users\\Edy\\.nuget\\packages\\",
+        "outputPath": "E:\\02-Projetos\\19.MatrixERP\\lemosinfotec.matrixerp\\lemosinfotec.matrixerp.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Edy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\02-Projetos\\19.MatrixERP\\lemosinfotec.matrixerp\\lemosinfotec.matrixErp.Repository\\lemosinfotec.matrixErp.Repository.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\02-Projetos\\19.MatrixERP\\lemosinfotec.matrixerp\\lemosinfotec.matrixErp.Repository\\lemosinfotec.matrixErp.Repository.csproj",
+        "projectName": "lemosinfotec.matrixErp.Repository",
+        "projectPath": "E:\\02-Projetos\\19.MatrixERP\\lemosinfotec.matrixerp\\lemosinfotec.matrixErp.Repository\\lemosinfotec.matrixErp.Repository.csproj",
+        "packagesPath": "C:\\Users\\Edy\\.nuget\\packages\\",
+        "outputPath": "E:\\02-Projetos\\19.MatrixERP\\lemosinfotec.matrixerp\\lemosinfotec.matrixErp.Repository\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Edy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "E:\\02-Projetos\\19.MatrixERP\\lemosinfotec.matrixerp\\lemosinfotec.matrixErp.Data\\lemosinfotec.matrixErp.Data.csproj": {
+                "projectPath": "E:\\02-Projetos\\19.MatrixERP\\lemosinfotec.matrixerp\\lemosinfotec.matrixErp.Data\\lemosinfotec.matrixErp.Data.csproj"
+              },
+              "E:\\02-Projetos\\19.MatrixERP\\lemosinfotec.matrixerp\\lemosinfotec.matrixerp.Domain\\lemosinfotec.matrixerp.Domain.csproj": {
+                "projectPath": "E:\\02-Projetos\\19.MatrixERP\\lemosinfotec.matrixerp\\lemosinfotec.matrixerp.Domain\\lemosinfotec.matrixerp.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\02-Projetos\\19.MatrixERP\\lemosinfotec.matrixerp\\lemosinfotec.matrixErp.UI\\lemosinfotec.matrixErp.UI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\02-Projetos\\19.MatrixERP\\lemosinfotec.matrixerp\\lemosinfotec.matrixErp.UI\\lemosinfotec.matrixErp.UI.csproj",
+        "projectName": "lemosinfotec.matrixErp.UI",
+        "projectPath": "E:\\02-Projetos\\19.MatrixERP\\lemosinfotec.matrixerp\\lemosinfotec.matrixErp.UI\\lemosinfotec.matrixErp.UI.csproj",
+        "packagesPath": "C:\\Users\\Edy\\.nuget\\packages\\",
+        "outputPath": "E:\\02-Projetos\\19.MatrixERP\\lemosinfotec.matrixerp\\lemosinfotec.matrixErp.UI\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Edy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0-windows7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0-windows7.0": {
+            "targetAlias": "net5.0-windows",
+            "projectReferences": {
+              "E:\\02-Projetos\\19.MatrixERP\\lemosinfotec.matrixerp\\lemosinfotec.matrixErp.Data\\lemosinfotec.matrixErp.Data.csproj": {
+                "projectPath": "E:\\02-Projetos\\19.MatrixERP\\lemosinfotec.matrixerp\\lemosinfotec.matrixErp.Data\\lemosinfotec.matrixErp.Data.csproj"
+              },
+              "E:\\02-Projetos\\19.MatrixERP\\lemosinfotec.matrixerp\\lemosinfotec.matrixErp.Repository\\lemosinfotec.matrixErp.Repository.csproj": {
+                "projectPath": "E:\\02-Projetos\\19.MatrixERP\\lemosinfotec.matrixerp\\lemosinfotec.matrixErp.Repository\\lemosinfotec.matrixErp.Repository.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0-windows7.0": {
+          "targetAlias": "net5.0-windows",
+          "dependencies": {
+            "FontAwesome.Sharp": {
+              "target": "Package",
+              "version": "[5.15.3, )"
+            },
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.9, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WindowsForms": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

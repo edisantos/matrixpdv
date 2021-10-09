@@ -1,0 +1,12 @@
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixerp.Domain\bin\Debug\net5.0\lemosinfotec.matrixerp.Domain.deps.json
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixerp.Domain\bin\Debug\net5.0\lemosinfotec.matrixerp.Domain.dll
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixerp.Domain\bin\Debug\net5.0\ref\lemosinfotec.matrixerp.Domain.dll
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixerp.Domain\bin\Debug\net5.0\lemosinfotec.matrixerp.Domain.pdb
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixerp.Domain\obj\Debug\net5.0\lemosinfotec.matrixerp.Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixerp.Domain\obj\Debug\net5.0\lemosinfotec.matrixerp.Domain.AssemblyInfoInputs.cache
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixerp.Domain\obj\Debug\net5.0\lemosinfotec.matrixerp.Domain.AssemblyInfo.cs
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixerp.Domain\obj\Debug\net5.0\lemosinfotec.matrixerp.Domain.csproj.CoreCompileInputs.cache
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixerp.Domain\obj\Debug\net5.0\lemosinfotec.matrixerp.Domain.dll
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixerp.Domain\obj\Debug\net5.0\ref\lemosinfotec.matrixerp.Domain.dll
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixerp.Domain\obj\Debug\net5.0\lemosinfotec.matrixerp.Domain.pdb
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixerp.Domain\obj\Debug\net5.0\lemosinfotec.matrixerp.Domain.csproj.AssemblyReference.cache

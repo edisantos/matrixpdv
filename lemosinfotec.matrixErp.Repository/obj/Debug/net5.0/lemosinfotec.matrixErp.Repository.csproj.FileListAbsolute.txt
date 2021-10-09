@@ -1,0 +1,17 @@
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixErp.Repository\bin\Debug\net5.0\lemosinfotec.matrixErp.Repository.deps.json
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixErp.Repository\bin\Debug\net5.0\lemosinfotec.matrixErp.Repository.dll
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixErp.Repository\bin\Debug\net5.0\ref\lemosinfotec.matrixErp.Repository.dll
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixErp.Repository\bin\Debug\net5.0\lemosinfotec.matrixErp.Repository.pdb
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixErp.Repository\bin\Debug\net5.0\lemosinfotec.matrixerp.Domain.dll
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixErp.Repository\bin\Debug\net5.0\lemosinfotec.matrixerp.Domain.pdb
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixErp.Repository\obj\Debug\net5.0\lemosinfotec.matrixErp.Repository.csproj.AssemblyReference.cache
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixErp.Repository\obj\Debug\net5.0\lemosinfotec.matrixErp.Repository.GeneratedMSBuildEditorConfig.editorconfig
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixErp.Repository\obj\Debug\net5.0\lemosinfotec.matrixErp.Repository.AssemblyInfoInputs.cache
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixErp.Repository\obj\Debug\net5.0\lemosinfotec.matrixErp.Repository.AssemblyInfo.cs
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixErp.Repository\obj\Debug\net5.0\lemosinfotec.matrixErp.Repository.csproj.CoreCompileInputs.cache
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixErp.Repository\obj\Debug\net5.0\lemosinfotec.matrixErp.Repository.csproj.CopyComplete
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixErp.Repository\obj\Debug\net5.0\lemosinfotec.matrixErp.Repository.dll
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixErp.Repository\obj\Debug\net5.0\ref\lemosinfotec.matrixErp.Repository.dll
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixErp.Repository\obj\Debug\net5.0\lemosinfotec.matrixErp.Repository.pdb
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixErp.Repository\bin\Debug\net5.0\lemosinfotec.matrixErp.Data.dll
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixErp.Repository\bin\Debug\net5.0\lemosinfotec.matrixErp.Data.pdb
