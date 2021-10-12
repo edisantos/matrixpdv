@@ -18,10 +18,13 @@ namespace lemosinfotec.matrixErp.UI.View
         ProdtutosRepository _produtosRepository = new ProdtutosRepository();
         EstoqueRepository _estoqueRepository = new EstoqueRepository();
         FornecedoresRepository _fornecedoresRepository = new FornecedoresRepository();
-        public FrmEstoqueProdutos()
+        AccountRepository _accountRepository = new AccountRepository();
+        int _IdUserLogado;
+        public FrmEstoqueProdutos(int IdUsr)
         {
             InitializeComponent();
             lblMsgAlerta.Visible = false;
+            _IdUserLogado = IdUsr;
             Drops();
             ListaEstoque();
             AplicarEventos(txtValorUnit);
@@ -75,7 +78,7 @@ namespace lemosinfotec.matrixErp.UI.View
                     frmLoading.ShowDialog(this);
                 }
                 Button nome = (Button)sender;
-
+                var empresa = _accountRepository.GetUsuarioById(Convert.ToInt32(_IdUserLogado));
                 var mod = new Estoque();
                 mod.ProdutoId = (int)cmbProdutos.SelectedValue;
                 mod.Quantidade = Convert.ToInt32(txtQuantidade.Text);
@@ -83,6 +86,7 @@ namespace lemosinfotec.matrixErp.UI.View
                 mod.TipoProdutoId = (int)cmbTipoProd.SelectedValue;
                 mod.EstoqueMin = Convert.ToInt32(txtEstoqueMin.Text);
                 mod.FornecedorId = (int)cmbFornecedor.SelectedValue;
+                mod.EmpresaId = empresa.EmpresaId;
                 if(nome.Text == "Salvar")
                 {
                     bool check = _estoqueRepository.checkEstoque(mod.ProdutoId);
@@ -130,9 +134,10 @@ namespace lemosinfotec.matrixErp.UI.View
         {
             try
             {
+                var empresa = _accountRepository.GetUsuarioById(Convert.ToInt32(_IdUserLogado));
                 grwListaEstoque.AutoGenerateColumns = false;
                 var estoque = new BindingSource();
-                estoque.DataSource = await _estoqueRepository.GetEstoque();
+                estoque.DataSource = await _estoqueRepository.GetEstoque(empresa.EmpresaId);
               
                 //var estoque = new BindingList<Estoque>(await _estoqueRepository.GetEstoque());
                 grwListaEstoque.DataSource = estoque;
@@ -154,13 +159,14 @@ namespace lemosinfotec.matrixErp.UI.View
         {
             try
             {
-                var produtos = await _produtosRepository.GetProdutos();
+                var empresa = _accountRepository.GetUsuarioById(Convert.ToInt32(_IdUserLogado));
+                var produtos = await _produtosRepository.GetProdutos(empresa.EmpresaId);
                 cmbProdutos.DataSource = produtos;
                 cmbProdutos.ValueMember = "ProdutoId";
                 cmbProdutos.DisplayMember = "ProdutoNome";
                 cmbProdutos.Text = "--ESCOLHA O PRODUTO--";
-
-                var fornecedores = await _fornecedoresRepository.GetFornecedores();
+                
+                var fornecedores = await _fornecedoresRepository.GetFornecedores(empresa.EmpresaId);
                 cmbFornecedor.DataSource = fornecedores;
                 cmbFornecedor.ValueMember = "FornecedorId";
                 cmbFornecedor.DisplayMember = "FornecedorNome";

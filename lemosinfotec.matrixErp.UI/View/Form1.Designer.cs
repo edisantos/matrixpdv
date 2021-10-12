@@ -53,6 +53,7 @@ namespace lemosinfotec.matrixErp.UI
             this.label4 = new System.Windows.Forms.Label();
             this.iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             this.pnlConteudos = new System.Windows.Forms.Panel();
+            this.iconFinanceiro = new FontAwesome.Sharp.IconButton();
             this.pnlHeader.SuspendLayout();
             this.pnlMenuLateral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox3)).BeginInit();
@@ -259,6 +260,7 @@ namespace lemosinfotec.matrixErp.UI
             // 
             this.pnlMenusControles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlMenusControles.Controls.Add(this.iconFinanceiro);
             this.pnlMenusControles.Controls.Add(this.btnAdmin);
             this.pnlMenusControles.Controls.Add(this.btnFornecedores);
             this.pnlMenusControles.Controls.Add(this.btnEstoque);
@@ -282,7 +284,7 @@ namespace lemosinfotec.matrixErp.UI
             this.btnAdmin.IconColor = System.Drawing.Color.White;
             this.btnAdmin.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAdmin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdmin.Location = new System.Drawing.Point(15, 298);
+            this.btnAdmin.Location = new System.Drawing.Point(14, 344);
             this.btnAdmin.Name = "btnAdmin";
             this.btnAdmin.Size = new System.Drawing.Size(215, 46);
             this.btnAdmin.TabIndex = 8;
@@ -455,6 +457,26 @@ namespace lemosinfotec.matrixErp.UI
             this.pnlConteudos.Size = new System.Drawing.Size(1228, 856);
             this.pnlConteudos.TabIndex = 2;
             // 
+            // iconFinanceiro
+            // 
+            this.iconFinanceiro.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.iconFinanceiro.FlatAppearance.BorderSize = 0;
+            this.iconFinanceiro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconFinanceiro.Font = new System.Drawing.Font("Arial Narrow", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.iconFinanceiro.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.iconFinanceiro.IconChar = FontAwesome.Sharp.IconChar.ChartBar;
+            this.iconFinanceiro.IconColor = System.Drawing.Color.White;
+            this.iconFinanceiro.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconFinanceiro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconFinanceiro.Location = new System.Drawing.Point(14, 285);
+            this.iconFinanceiro.Name = "iconFinanceiro";
+            this.iconFinanceiro.Size = new System.Drawing.Size(215, 46);
+            this.iconFinanceiro.TabIndex = 9;
+            this.iconFinanceiro.Text = "Financeiro";
+            this.iconFinanceiro.UseVisualStyleBackColor = true;
+            this.iconFinanceiro.Click += new System.EventHandler(this.iconFinanceiro_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -506,6 +528,7 @@ namespace lemosinfotec.matrixErp.UI
         private System.Windows.Forms.Panel pnlConteudos;
         private System.Windows.Forms.Label lblNome;
         private FontAwesome.Sharp.IconButton btnAdmin;
+        private FontAwesome.Sharp.IconButton iconFinanceiro;
     }
 }
 

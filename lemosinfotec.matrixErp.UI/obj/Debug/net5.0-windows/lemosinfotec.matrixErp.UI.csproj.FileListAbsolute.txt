@@ -102,7 +102,10 @@ E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixErp.UI\obj
 E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixErp.UI\obj\Debug\net5.0-windows\lemosinfotec.matrixErp.UI.View.FrmPagamentos.resources
 E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixErp.UI\obj\Debug\net5.0-windows\lemosinfotec.matrixErp.UI.View.FrmRemoverItem.resources
 E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixErp.UI\obj\Debug\net5.0-windows\lemosinfotec.matrixErp.UI.View.FrmFornecedor.resources
-E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixErp.UI\obj\Debug\net5.0-windows\lemosinfotec.matrixErp.UI.View.FrnFinanceiro.resources
 E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixErp.UI\obj\Debug\net5.0-windows\lemosinfotec.matrixErp.UI.View.FrmAdmin.resources
 E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixErp.UI\obj\Debug\net5.0-windows\lemosinfotec.matrixErp.UI.View.FrmNovoUsuario.resources
 E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixErp.UI\obj\Debug\net5.0-windows\lemosinfotec.matrixErp.UI.View.FrmRoles.resources
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixErp.UI\obj\Debug\net5.0-windows\lemosinfotec.matrixErp.UI.View.FrmFinanceiro.resources
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixErp.UI\bin\Debug\net5.0-windows\LiveCharts.dll
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixErp.UI\bin\Debug\net5.0-windows\LiveCharts.WinForms.dll
+E:\02-Projetos\19.MatrixERP\lemosinfotec.matrixerp\lemosinfotec.matrixErp.UI\bin\Debug\net5.0-windows\LiveCharts.Wpf.dll

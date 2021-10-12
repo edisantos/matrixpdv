@@ -12,5 +12,6 @@ namespace lemosinfotec.matrixerp.Domain.Entities
         public int TipoPagamentoId { get; set; }
         public int CaixaId { get; set; }
         public int StatusVendas { get; set; }
+        public int EmpresaId { get; set; }
     }
 }

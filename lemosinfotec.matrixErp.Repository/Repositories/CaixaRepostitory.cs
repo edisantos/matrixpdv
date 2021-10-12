@@ -11,15 +11,16 @@ namespace lemosinfotec.matrixErp.Repository.Repositories
 {
     public class CaixaRepostitory:DaoContexto
     {
-        public async Task<IEnumerable<Caixas>> GetNumeroCaixas()
+        public async Task<IEnumerable<Caixas>> GetNumeroCaixas(int Empresaid)
         {
             try
             {
                 OpenConnection();
                 List<Caixas> lista = new List<Caixas>();
-                string strSelect = string.Format(@"SELECT Id,Nome FROM Caixas");
+                string strSelect = string.Format(@"SELECT Id,Nome FROM Caixas WHERE EmpresaId = @EmpresaId");
                 using(cmd = new Microsoft.Data.SqlClient.SqlCommand(strSelect, con))
                 {
+                    cmd.Parameters.AddWithValue("@EmpresaId", Empresaid);
                     using(Dr = await cmd.ExecuteReaderAsync())
                     {
                         Caixas mod = null;

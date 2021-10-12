@@ -108,8 +108,8 @@ namespace lemosinfotec.matrixErp.UI.View
         {
             try
             {
-
-                var total = _repository.Contador();
+                var empresa = _accountRepository.GetUsuarioById(Convert.ToInt32(_IdUserLogado));
+                var total = _repository.Contador(empresa.EmpresaId);
                 lblContator.Text = "Total de produtos: " + Convert.ToString(total);
 
 
@@ -148,6 +148,7 @@ namespace lemosinfotec.matrixErp.UI.View
 
         private async void btnSearch_Click(object sender, EventArgs e)
         {
+            var empresa = _accountRepository.GetUsuarioById(Convert.ToInt32(_IdUserLogado));
             string ProdutoNome = txtSearch.Text.ToUpper();
             if (ProdutoNome != "")
             {
@@ -160,7 +161,7 @@ namespace lemosinfotec.matrixErp.UI.View
             else
             {
                 grwListaProdutos.AutoGenerateColumns = false;
-                var listar = new BindingList<Produtos>(await _repository.GetProdutos());
+                var listar = new BindingList<Produtos>(await _repository.GetProdutos(empresa.EmpresaId));
                 grwListaProdutos.DataSource = listar;
                 Contator();
             }

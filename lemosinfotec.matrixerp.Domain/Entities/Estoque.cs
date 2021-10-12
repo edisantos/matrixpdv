@@ -15,6 +15,7 @@ namespace lemosinfotec.matrixerp.Domain.Entities
         public int TipoProdutoId { get; set; }
         public int EstoqueMin { get; set; }
         public int FornecedorId { get; set; }
+        public int EmpresaId { get; set; }
         public string FornecedorNome { get; set; }
 
         public ICollection<Fornecedores> Fornecedores { get; set; }

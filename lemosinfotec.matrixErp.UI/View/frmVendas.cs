@@ -18,11 +18,13 @@ namespace lemosinfotec.matrixErp.UI.View
         CaixaRepostitory _caixaRepostitory = new CaixaRepostitory();
         TipoPagamentoRepository _tipoPagamento = new TipoPagamentoRepository();
         CaixaVendasBase caixaVendasModel = new CaixaVendasBase();
-        public frmVendas()
+        AccountRepository _accountRepository = new AccountRepository();
+        int _IdUserLogado;
+        public frmVendas(int IdUsr)
         {
             InitializeComponent();
 
-
+            _IdUserLogado = IdUsr;
             lblMsgAlerta.Visible = false;
             Combox();
             GetListaVendas();
@@ -40,7 +42,8 @@ namespace lemosinfotec.matrixErp.UI.View
 
         public async void Combox()
         {
-            var caixas = await _caixaRepostitory.GetNumeroCaixas();
+            var empresa = _accountRepository.GetUsuarioById(Convert.ToInt32(_IdUserLogado));
+            var caixas = await _caixaRepostitory.GetNumeroCaixas(empresa.EmpresaId);
 
             cmbCaixa.DataSource = caixas;
             cmbCaixa.ValueMember = "Id";
@@ -68,11 +71,12 @@ namespace lemosinfotec.matrixErp.UI.View
         private void LerCodigo()
         {
             int combo = Convert.ToInt32(cmbCaixa.SelectedValue);
-            if (combo == 1)
+            if (combo > 0)
             {
+                var empresa = _accountRepository.GetUsuarioById(Convert.ToInt32(_IdUserLogado));
                 Estoque mod = new Estoque();
                 int ProdutoId = Convert.ToInt32(txtCodeItem.Text);
-                mod = _vendasRepository.GetValorUnit(ProdutoId);
+                mod = _vendasRepository.GetValorUnit(ProdutoId, empresa.EmpresaId);
                 if (mod != null)
                 {
                     lblValorUnitario.Font = new Font(lblValorUnitario.Font.Name, 24F);
@@ -104,15 +108,17 @@ namespace lemosinfotec.matrixErp.UI.View
 
         private void btnFinalizar_Click_1(object sender, EventArgs e)
         {
+            var empresa = _accountRepository.GetUsuarioById(Convert.ToInt32(_IdUserLogado));
             CaixaVendasBase mod = new CaixaVendasBase();
             mod.CaixaId = Convert.ToInt32(cmbCaixa.SelectedValue);
+            mod.EmpresaId = empresa.EmpresaId;
             var statusCaixa = btnFinalizar.Text;
             switch (statusCaixa)
             {
                 case "INICIAR VENDAS":
                     _vendasRepository.AbrirCaixa(mod);
-
-                    var check = _vendasRepository.CheckStatusCaixa(mod.CaixaId);
+                   
+                    var check = _vendasRepository.CheckStatusCaixa(mod.CaixaId,empresa.EmpresaId);
                     if (check != null)
                     {
                         btnFinalizar.Text = "INICIAR VENDAS";
@@ -121,7 +127,9 @@ namespace lemosinfotec.matrixErp.UI.View
                     }
                     break;
                 case "FINALIZAR VENDAS":
-                    caixaVendasModel = _vendasRepository.CheckStatusCaixa(mod.CaixaId);
+
+                    
+                    caixaVendasModel = _vendasRepository.CheckStatusCaixa(mod.CaixaId, empresa.EmpresaId);
                     _vendasRepository.FinalizarVenda(caixaVendasModel.Id);
                     GetListaVendas();
                     TotalItemVendas();
@@ -143,35 +151,40 @@ namespace lemosinfotec.matrixErp.UI.View
         {
             if (txtCodeItem.Text != "")
             {
-                bool check = _vendasRepository.CheckProdutoEstoque(Convert.ToInt32(txtCodeItem.Text));
+                var empresa = _accountRepository.GetUsuarioById(Convert.ToInt32(_IdUserLogado));
+                bool check = _vendasRepository.CheckProdutoEstoque(Convert.ToInt32(txtCodeItem.Text),empresa.EmpresaId);
                 if (check == true)
                 {
                     if(lblStatusCaixa.Text !="CAIXA LIVRE")
                     {
+                       
                         Estoque estoque = new Estoque();
                         var CaixaId = Convert.ToInt32(cmbCaixa.SelectedValue);
-                        caixaVendasModel = _vendasRepository.CheckStatusCaixa(CaixaId);
+                        caixaVendasModel = _vendasRepository.CheckStatusCaixa(CaixaId,empresa.EmpresaId);
                         Vendas vendas = new Vendas();
                         vendas.ProdutoId = Convert.ToInt32(txtCodeItem.Text);
-                        estoque = _vendasRepository.CheckQtyEstoque(Convert.ToInt32(txtCodeItem.Text));
+                        estoque = _vendasRepository.CheckQtyEstoque(Convert.ToInt32(txtCodeItem.Text),empresa.EmpresaId);
                         if (estoque.Quantidade < estoque.EstoqueMin)
                         {
                             MessageBox.Show("Estoque Baixo!" + "Há apenas " + estoque.Quantidade + " itens no estoque. É necessarios repor.");
                         }
                         if (estoque.Quantidade > 0)
                         {
+                            
                             vendas.CaixaId = CaixaId;
                             vendas.TotalItem = 1;
+                            vendas.OperadorId = empresa.Id;
                             vendas.VendasBaseId = caixaVendasModel.Id;
+                            vendas.EmpresaId = empresa.EmpresaId;
                             _vendasRepository.RegistrarVendas(vendas);
 
                             int novaQuantidadeEstoque = estoque.Quantidade - 1;
                             estoque.Quantidade = novaQuantidadeEstoque;
                             _vendasRepository.AtualiarEstoqueVendas(estoque);
 
-                            int getVendasId = _vendasRepository.GetVendasId(Convert.ToInt32(txtCodeItem.Text));
+                            int getVendasId = _vendasRepository.GetVendasId(Convert.ToInt32(txtCodeItem.Text),empresa.EmpresaId);
 
-                            FrmSetPeso formPeso = new FrmSetPeso(getVendasId);
+                            FrmSetPeso formPeso = new FrmSetPeso(getVendasId, empresa.EmpresaId);
                             formPeso.ShowDialog();
 
                         }
@@ -195,10 +208,12 @@ namespace lemosinfotec.matrixErp.UI.View
                 }
                 else
                 {
-                    lblMsgAlerta.Visible = true;
-                    lblMsgAlerta.ForeColor = Color.DarkRed;
-                    lblMsgAlerta.Font = new Font(lblMsgAlerta.Font.Name, 24F);
-                    lblMsgAlerta.Text = "Produto não encontrado no estoque";
+                    //lblMsgAlerta.Visible = true;
+                    //lblMsgAlerta.ForeColor = Color.DarkRed;
+                    //lblMsgAlerta.Font = new Font(lblMsgAlerta.Font.Name, 24F);
+                    //lblMsgAlerta.Text = "Produto não encontrado no estoque";
+                    MessageBox.Show("Produto não encontrado no estoque");
+                    txtCodeItem.Text = string.Empty;
                 }
 
 
@@ -216,6 +231,7 @@ namespace lemosinfotec.matrixErp.UI.View
         {
             try
             {
+                var empresas = _accountRepository.GetUsuarioById(Convert.ToInt32(_IdUserLogado));
                 int caixa = Convert.ToInt32(cmbCaixa.SelectedValue);
                 grwListaItem.AutoGenerateColumns = false;
                 grwListaItem.Columns[0].HeaderCell.Style.Font = new Font("Tahoma", 9.75F, FontStyle.Bold);
@@ -229,7 +245,7 @@ namespace lemosinfotec.matrixErp.UI.View
                 grwListaItem.Columns[4].HeaderCell.Style.Font = new Font("Tahoma", 9.75F, FontStyle.Bold);
                 grwListaItem.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.BottomCenter;
                 var vendas = new BindingSource();
-                vendas.DataSource = await _vendasRepository.GetVendas(caixa);
+                vendas.DataSource = await _vendasRepository.GetVendas(caixa,empresas.EmpresaId);
                 grwListaItem.DataSource = vendas;
 
             }
@@ -262,9 +278,9 @@ namespace lemosinfotec.matrixErp.UI.View
         {
             try
             {
-
+                var empresas = _accountRepository.GetUsuarioById(Convert.ToInt32(_IdUserLogado));
                 int caixa = Convert.ToInt32(cmbCaixa.SelectedValue);
-                var subtotal = _vendasRepository.SubTotal(caixa);
+                var subtotal = _vendasRepository.SubTotal(caixa,empresas.EmpresaId);
                 lblSubTotal.Text = subtotal.ToString("C");
             }
             catch (Exception ex)
@@ -280,7 +296,8 @@ namespace lemosinfotec.matrixErp.UI.View
         /// <param name="CaixaId"></param>
         private void CheckStatus(int CaixaId)
         {
-            caixaVendasModel = _vendasRepository.CheckStatusCaixa(CaixaId);
+            var empresas = _accountRepository.GetUsuarioById(Convert.ToInt32(_IdUserLogado));
+            caixaVendasModel = _vendasRepository.CheckStatusCaixa(CaixaId,empresas.EmpresaId);
             if (caixaVendasModel != null)
             {
                 btnFinalizar.Text = "INICIAR VENDAS";
@@ -297,8 +314,18 @@ namespace lemosinfotec.matrixErp.UI.View
 
         private void btnAtivarCaixa_Click(object sender, EventArgs e)
         {
+            var empresa = _accountRepository.GetUsuarioById(Convert.ToInt32(_IdUserLogado));
+            CaixaVendasBase mod = new CaixaVendasBase();
+            mod.CaixaId = Convert.ToInt32(cmbCaixa.SelectedValue);
             if (Convert.ToInt32(cmbCaixa.SelectedValue) > 0)
             {
+                var check = _vendasRepository.CheckStatusCaixa(mod.CaixaId, empresa.EmpresaId);
+                if (check != null)
+                {
+                    
+                    lblStatusCaixa.Text = "CAIXA OCUPADO";
+                    btnFinalizar.Enabled = false;
+                }
                 CheckStatus(Convert.ToInt32(cmbCaixa.SelectedValue));
                 GetListaVendas();
                 TotalItemVendas();
@@ -340,8 +367,10 @@ namespace lemosinfotec.matrixErp.UI.View
             int CaixaId = Convert.ToInt32(cmbCaixa.SelectedValue);
             switch (e.KeyCode)
             {
+               
                 case Keys.F1:
-                    caixaVendasModel = _vendasRepository.CheckStatusCaixa(CaixaId);
+                    var empresas = _accountRepository.GetUsuarioById(Convert.ToInt32(_IdUserLogado));
+                    caixaVendasModel = _vendasRepository.CheckStatusCaixa(CaixaId, empresas.EmpresaId);
                     FrmPagamentos pagamentos = new FrmPagamentos(caixaVendasModel.Id);
                     pagamentos.ShowDialog();
                     GetValoresPagamentos(caixaVendasModel.Id);
@@ -361,8 +390,9 @@ namespace lemosinfotec.matrixErp.UI.View
 
         private void linkPagamento_Click(object sender, EventArgs e)
         {
+            var empresas = _accountRepository.GetUsuarioById(Convert.ToInt32(_IdUserLogado));
             int CaixaId = Convert.ToInt32(cmbCaixa.SelectedValue);
-            caixaVendasModel = _vendasRepository.CheckStatusCaixa(CaixaId);
+            caixaVendasModel = _vendasRepository.CheckStatusCaixa(CaixaId,empresas.EmpresaId);
             FrmPagamentos pagamentos = new FrmPagamentos(caixaVendasModel.Id);
             pagamentos.ShowDialog();
 

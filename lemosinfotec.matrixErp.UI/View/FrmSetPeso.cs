@@ -17,17 +17,19 @@ namespace lemosinfotec.matrixErp.UI.View
         frmVendas objVendas;
         VendasRepository _vendasRepository = new VendasRepository();
         int VendasId;
-        public FrmSetPeso(int Id)
+        int EmpId;
+        public FrmSetPeso(int Id, int EmpresaId)
         {
             InitializeComponent();
             lblVendasId.Visible = false;
             VendasId = Id;
+            EmpId = EmpresaId;
            
         }
          
         private void GetValores(Vendas vendas)
         {
-            decimal valorUnitario = _vendasRepository.GetValorUnitById(VendasId);
+            decimal valorUnitario = _vendasRepository.GetValorUnitById(VendasId, EmpId);
             decimal peso = Convert.ToDecimal(txtPeso.Text);
             decimal ValorVendas = peso * valorUnitario / 1000;
 

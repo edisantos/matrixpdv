@@ -12,15 +12,16 @@ namespace lemosinfotec.matrixErp.Repository.Repositories
     public class FornecedoresRepository:DaoContexto
     {
 
-        public async Task<IEnumerable<Fornecedores>> GetFornecedores()
+        public async Task<IEnumerable<Fornecedores>> GetFornecedores(int EmpresaId)
         {
             try
             {
                 OpenConnection();
                 List<Fornecedores> lista = new List<Fornecedores>();
-                string strSelect = string.Format(@"SELECT FornecedorId,FornecedorNome FROM Fornecedores");
+                string strSelect = string.Format(@"SELECT FornecedorId,FornecedorNome FROM Fornecedores WHERE EmpresaId =@EmpresaId");
                 using (cmd = new Microsoft.Data.SqlClient.SqlCommand(strSelect, con))
                 {
+                    cmd.Parameters.AddWithValue("@EmpresaId", EmpresaId);
                     using (Dr = await cmd.ExecuteReaderAsync())
                     {
                         Fornecedores mod = null;

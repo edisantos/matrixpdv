@@ -11,17 +11,17 @@ namespace lemosinfotec.matrixErp.Repository.Repositories
 {
     public class VendasRepository : DaoContexto
     {
-        public Estoque GetValorUnit(int? ProdutoId)
+        public Estoque GetValorUnit(int? ProdutoId, int EmpresaId)
         {
             try
             {
                 OpenConnection();
                 string strSelect = string.Format(@"SELECT ValorUnit FROM Estoque
-                                                   WHERE ProdutoId = @ProdutoId");
+                                                   WHERE ProdutoId = @ProdutoId AND EmpresaId = @EmpresaId");
                 using (cmd = new Microsoft.Data.SqlClient.SqlCommand(strSelect, con))
                 {
                     cmd.Parameters.AddWithValue("@ProdutoId", ProdutoId);
-
+                    cmd.Parameters.AddWithValue("@EmpresaId", EmpresaId);
                     using (Dr = cmd.ExecuteReader())
                     {
                         Estoque mod = null;
@@ -61,11 +61,12 @@ namespace lemosinfotec.matrixErp.Repository.Repositories
             try
             {
                 OpenConnection();
-                string strInsert = string.Format(@"INSERT INTO CaixaVendasBase VALUES(SYSDATETIME(),NULL,NULL,NULL,NULL,@CaixaId,0)");
+                string strInsert = string.Format(@"INSERT INTO CaixaVendasBase VALUES(SYSDATETIME(),NULL,NULL,NULL,NULL,@CaixaId,0,@EmpresaId)");
                 using (cmd = new Microsoft.Data.SqlClient.SqlCommand(strInsert, con))
                 {
 
                     cmd.Parameters.AddWithValue("@CaixaId", mod.CaixaId);
+                    cmd.Parameters.AddWithValue("@EmpresaId", mod.EmpresaId);
                     cmd.ExecuteNonQuery();
 
                 }
@@ -88,12 +89,14 @@ namespace lemosinfotec.matrixErp.Repository.Repositories
             try
             {
                 OpenConnection();
-                string strInsert = string.Format(@"INSERT INTO Vendas VALUES(SYSDATETIME(),@ProdutoId,@TotalItem,NULL,NULL,1,1,@VendasBaseId)");
+                string strInsert = string.Format(@"INSERT INTO Vendas VALUES(SYSDATETIME(),@ProdutoId,@TotalItem,NULL,NULL,1,@OperadorId,@VendasBaseId,@EmpresaId)");
                 using (cmd = new Microsoft.Data.SqlClient.SqlCommand(strInsert, con))
                 {
                     cmd.Parameters.AddWithValue("@ProdutoId", vendas.ProdutoId);
                     cmd.Parameters.AddWithValue("@TotalItem", vendas.TotalItem);
+                    cmd.Parameters.AddWithValue("@OperadorId", vendas.OperadorId);
                     cmd.Parameters.AddWithValue("@VendasBaseId", vendas.VendasBaseId);
+                    cmd.Parameters.AddWithValue("@EmpresaId", vendas.EmpresaId);
                     cmd.ExecuteNonQuery();
 
                 }
@@ -112,7 +115,7 @@ namespace lemosinfotec.matrixErp.Repository.Repositories
         /// 
         /// </summary>
         /// <returns></returns>
-        public async Task<IEnumerable<Vendas>> GetVendas(int CaixaId)
+        public async Task<IEnumerable<Vendas>> GetVendas(int CaixaId, int EmpresaId)
         {
             try
             {
@@ -122,10 +125,12 @@ namespace lemosinfotec.matrixErp.Repository.Repositories
                                                     INNER JOIN Produtos B ON A.ProdutoId = B.ProdutoId
                                                     INNER JOIN Estoque C ON A.ProdutoId = C.ProdutoId
                                                     INNER JOIN CaixaVendasBase D ON A.VendasBaseId = D.Id
-                                                    WHERE D.CaixaId = @Caixaid AND StatusVendas = 0 AND Status = 1");
+                                                    WHERE D.CaixaId = @Caixaid AND StatusVendas = 0 
+                                                    AND Status = 1 AND A.EmpresaId= @EmpresaId");
                 using (cmd = new Microsoft.Data.SqlClient.SqlCommand(strSelect, con))
                 {
                     cmd.Parameters.AddWithValue("@CaixaId", CaixaId);
+                    cmd.Parameters.AddWithValue("@EmpresaId", EmpresaId);
                     using (Dr = await cmd.ExecuteReaderAsync())
                     {
                         Vendas mod = null;
@@ -198,7 +203,7 @@ namespace lemosinfotec.matrixErp.Repository.Repositories
         /// </summary>
         /// <param name="CaixaId"></param>
         /// <returns></returns>
-        public decimal SubTotal(int CaixaId)
+        public decimal SubTotal(int CaixaId, int EmpresaId)
         {
             try
             {
@@ -206,10 +211,12 @@ namespace lemosinfotec.matrixErp.Repository.Repositories
                 string strSelect = string.Format(@"SELECT SUM(A.ValorVenda)As SubTotal FROM Vendas A
                                                     INNER JOIN Estoque C ON A.ProdutoId = C.ProdutoId
                                                     INNER JOIN CaixaVendasBase D ON A.VendasBaseId = D.Id
-                                                    WHERE D.CaixaId = @CaixaId AND D.StatusVendas = 0 AND Status = 1");
+                                                    WHERE D.CaixaId = @CaixaId AND D.StatusVendas = 0 
+                                                    AND Status = 1 AND A.EmpresaId =@EmpresaId");
                 using (cmd = new Microsoft.Data.SqlClient.SqlCommand(strSelect, con))
                 {
                     cmd.Parameters.AddWithValue("@CaixaId", CaixaId);
+                    cmd.Parameters.AddWithValue("@Empresaid", EmpresaId);
                     using (Dr = cmd.ExecuteReader())
                     {
                         Vendas mod = null;
@@ -237,15 +244,17 @@ namespace lemosinfotec.matrixErp.Repository.Repositories
         /// 
         /// </summary>
         /// <returns></returns>
-        public bool CheckProdutoEstoque(int ProdutoId)
+        public bool CheckProdutoEstoque(int ProdutoId,int EmpresaId)
         {
             try
             {
                 OpenConnection();
-                string strSelect = string.Format(@"SELECT ProdutoId FROM Estoque WHERE ProdutoId = @ProdutoId");
+                string strSelect = string.Format(@"SELECT ProdutoId FROM Estoque 
+                                                    WHERE ProdutoId = @ProdutoId AND EmpresaId =@EmpresaId");
                 using (cmd = new Microsoft.Data.SqlClient.SqlCommand(strSelect, con))
                 {
                     cmd.Parameters.AddWithValue("@ProdutoId", ProdutoId);
+                    cmd.Parameters.AddWithValue("@EmpresaId", EmpresaId);
                     using (Dr = cmd.ExecuteReader())
                     {
                         if (Dr.HasRows)
@@ -273,16 +282,17 @@ namespace lemosinfotec.matrixErp.Repository.Repositories
         /// 
         /// </summary>
         /// <returns></returns>
-        public Estoque CheckQtyEstoque(int ProdutoId)
+        public Estoque CheckQtyEstoque(int ProdutoId, int EmpresaId)
         {
             try
             {
                 OpenConnection();
                 string strSelect = string.Format(@"SELECT ProdutoId,Quantidade,EstoqueMin FROM ESTOQUE
-                                                    WHERE ProdutoId = @ProdutoId");
+                                                    WHERE ProdutoId = @ProdutoId AND EmpresaId = @EmpresaId");
                 using (cmd = new Microsoft.Data.SqlClient.SqlCommand(strSelect, con))
                 {
                     cmd.Parameters.AddWithValue("@produtoId", ProdutoId);
+                    cmd.Parameters.AddWithValue("@EmpresaId", EmpresaId);
                     using (Dr = cmd.ExecuteReader())
                     {
                         Estoque mod = null;
@@ -338,17 +348,20 @@ namespace lemosinfotec.matrixErp.Repository.Repositories
         /// 
         /// </summary>
         /// <returns></returns>
-        public CaixaVendasBase CheckStatusCaixa(int CaixaId)
+        public CaixaVendasBase CheckStatusCaixa(int CaixaId, int EmpresaId)
         {
             try
             {
                 OpenConnection();
                 string strSelect = string.Format(@"SELECT Id,StatusVendas
                                                     FROM CaixaVendasBase
-                                                    WHERE CaixaId = @CaixaId AND StatusVendas = 0");
+                                                    WHERE CaixaId = @CaixaId 
+                                                          AND StatusVendas = 0
+                                                          AND EmpresaId = @EmpresaId");
                 using (cmd = new Microsoft.Data.SqlClient.SqlCommand(strSelect, con))
                 {
                     cmd.Parameters.AddWithValue("@CaixaId", CaixaId);
+                    cmd.Parameters.AddWithValue("@EmpresaId", EmpresaId);
                     using (Dr = cmd.ExecuteReader())
                     {
                         CaixaVendasBase mod = null;
@@ -377,17 +390,18 @@ namespace lemosinfotec.matrixErp.Repository.Repositories
         /// 
         /// </summary>
         /// <returns></returns>
-        public int GetVendasId(int Id)
+        public int GetVendasId(int Id, int EmpresaId)
         {
             try
             {
                 OpenConnection();
                 string strSelect = string.Format(@"SELECT A.Id FROM Vendas A
                                                     INNER JOIN Estoque B ON A.ProdutoId = B.ProdutoId
-                                                    WHERE A.ProdutoId = @Id AND Peso is null");
+                                                    WHERE A.ProdutoId = @Id AND Peso is null AND A.EmpresaId =@EmpresaId");
                 using (cmd = new Microsoft.Data.SqlClient.SqlCommand(strSelect, con))
                 {
                     cmd.Parameters.AddWithValue("@Id", Id);
+                    cmd.Parameters.AddWithValue("@EmpresaId", EmpresaId);
                     using (Dr = cmd.ExecuteReader())
                     {
                         Vendas mod = null;
@@ -416,17 +430,18 @@ namespace lemosinfotec.matrixErp.Repository.Repositories
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public decimal GetValorUnitById(int Id)
+        public decimal GetValorUnitById(int Id, int EmpresaId)
         {
             try
             {
                 OpenConnection();
                 string strSelect = string.Format(@"SELECT B.ValorUnit FROM Vendas A
                                                     INNER JOIN Estoque B ON A.ProdutoId = B.ProdutoId
-                                                    WHERE A.Id = @Id");
+                                                    WHERE A.Id = @Id AND A.EmpresaId = @EmpresaId");
                 using (cmd = new Microsoft.Data.SqlClient.SqlCommand(strSelect, con))
                 {
                     cmd.Parameters.AddWithValue("@Id", Id);
+                    cmd.Parameters.AddWithValue("@EmpresaId", EmpresaId);
                     using (Dr = cmd.ExecuteReader())
                     {
                         Vendas mod = null;

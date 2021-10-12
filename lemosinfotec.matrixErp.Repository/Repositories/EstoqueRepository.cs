@@ -20,7 +20,7 @@ namespace lemosinfotec.matrixErp.Repository.Repositories
             try
             {
                 OpenConnection();
-                string strInsert = string.Format(@"INSERT INTO Estoque VALUES(SYSDATETIME(),@ProdutoId,@Quantidade,@ValorUnit,@TipoProdutoId,@EstoqueMin,@FornecedorId)");
+                string strInsert = string.Format(@"INSERT INTO Estoque VALUES(SYSDATETIME(),@ProdutoId,@Quantidade,@ValorUnit,@TipoProdutoId,@EstoqueMin,@FornecedorId,@EmpresaId)");
                 using(cmd = new Microsoft.Data.SqlClient.SqlCommand(strInsert, con))
                 {
                     cmd.Parameters.AddWithValue("@ProdutoId", mod.ProdutoId);
@@ -29,6 +29,7 @@ namespace lemosinfotec.matrixErp.Repository.Repositories
                     cmd.Parameters.AddWithValue("@TipoProdutoId", mod.TipoProdutoId);
                     cmd.Parameters.AddWithValue("@EstoqueMin", mod.EstoqueMin);
                     cmd.Parameters.AddWithValue("@FornecedorId", mod.FornecedorId);
+                    cmd.Parameters.AddWithValue("@EmpresaId", mod.EmpresaId);
                   await  cmd.ExecuteNonQueryAsync();
                 }
 
@@ -47,7 +48,7 @@ namespace lemosinfotec.matrixErp.Repository.Repositories
         /// 
         /// </summary>
         /// <returns></returns>
-        public async Task<IEnumerable<Estoque>> GetEstoque()
+        public async Task<IEnumerable<Estoque>> GetEstoque(int Empresaid)
         {
             try
             {
@@ -59,9 +60,11 @@ namespace lemosinfotec.matrixErp.Repository.Repositories
                                                     INNER JOIN Produtos B ON A.ProdutoId = B.ProdutoId
                                                     INNER JOIN TipoProdutos C ON A.TipoProdutoId = C.Id
                                                     INNER JOIN Fornecedores D ON A.FornecedorId = D.FornecedorId
+                                                    WHERE A.EmpresaId = @EmpresaId
                                                     ORDER BY B.ProdutoNome ASC");
                 using(cmd = new Microsoft.Data.SqlClient.SqlCommand(strSelect, con))
                 {
+                    cmd.Parameters.AddWithValue("@EmpresaId", Empresaid);
                     using(Dr = await cmd.ExecuteReaderAsync())
                     {
                         Estoque mod = null;

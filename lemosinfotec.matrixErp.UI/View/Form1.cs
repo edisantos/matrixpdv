@@ -113,7 +113,7 @@ namespace lemosinfotec.matrixErp.UI
         {
             _objForm?.Close();
 
-            _objForm = new FrmEstoqueProdutos
+            _objForm = new FrmEstoqueProdutos(IdUsr)
             {
                 TopLevel = false,
                 FormBorderStyle = FormBorderStyle.None,
@@ -130,7 +130,7 @@ namespace lemosinfotec.matrixErp.UI
         {
             _objForm?.Close();
 
-            _objForm = new frmVendas
+            _objForm = new frmVendas(IdUsr)
             {
                 TopLevel = false,
                 FormBorderStyle = FormBorderStyle.None,
@@ -206,6 +206,25 @@ namespace lemosinfotec.matrixErp.UI
             {
                 MessageBox.Show("Você não tem permissão para entrar nesta pagina!");
             }
+        }
+
+        private void iconFinanceiro_Click(object sender, EventArgs e)
+        {
+            _objForm?.Close();
+
+            _objForm = new FrmFinanceiro(IdUsr)
+            {
+                TopLevel = false,
+                FormBorderStyle = FormBorderStyle.None,
+                Dock = DockStyle.Fill
+
+
+
+
+            };
+
+            pnlConteudos.Controls.Add(_objForm);
+            _objForm.Show();
         }
     }
 }

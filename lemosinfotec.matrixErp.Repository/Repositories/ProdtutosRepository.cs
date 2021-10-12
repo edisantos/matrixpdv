@@ -79,14 +79,16 @@ namespace lemosinfotec.matrixErp.Repository.Repositories
         /// 
         /// </summary>
         /// <returns></returns>
-        public int Contador()
+        public int Contador(int EmpresaId)
         {
             try
             {
                 OpenConnection();
-                string strSelect = string.Format(@"SELECT COUNT(ProdutoId) As Total FROM Produtos");
+                string strSelect = string.Format(@"SELECT COUNT(ProdutoId) As Total 
+                                                   FROM Produtos WHERE EmpresaId = @EmpresaId");
                 using(cmd = new Microsoft.Data.SqlClient.SqlCommand(strSelect, con))
                 {
+                    cmd.Parameters.AddWithValue("@EmpresaId", EmpresaId);
                     using(Dr = cmd.ExecuteReader())
                     {
                         Produtos mod = null;

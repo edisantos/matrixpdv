@@ -6,6 +6,7 @@ namespace lemosinfotec.matrixerp.Domain.Entities
     {
         public int Id { get; set; }
         public DateTime DataVendas { get; set; }
+        public int OperadorId { get; set; }
         public string Operador { get; set; }
         public int CaixaId { get; set; }
         public int ProdutoId { get; set; }
@@ -19,5 +20,6 @@ namespace lemosinfotec.matrixerp.Domain.Entities
          public decimal SubTotal { get; set; }
          public decimal ValorUnit { get; set; }
         //public int TipoPagamentoId { get; set; }
+        public int EmpresaId { get; set; }
     }
 }
