@@ -19,7 +19,7 @@ namespace lemosinfotec.matrixErp.Data.Contexto
         public DbSet<LoginModel> Login { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string strConnection = string.Format(@"workstation id=DbLemos.mssql.somee.com;packet size=4096;user id=edylemos_SQLLogin_1;pwd=nsytnrghhk;data source=DbLemos.mssql.somee.com;persist security info=False;initial catalog=DbLemos");
+            string strConnection = string.Format(@"*************");
             optionsBuilder.UseSqlServer(strConnection);
         }
 
