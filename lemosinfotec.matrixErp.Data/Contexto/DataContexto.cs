@@ -19,7 +19,7 @@ namespace lemosinfotec.matrixErp.Data.Contexto
         public DbSet<LoginModel> Login { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string strConnection = string.Format(@"*************");
+            string strConnection = string.Format(@"string-conexao");
             optionsBuilder.UseSqlServer(strConnection);
         }
 
