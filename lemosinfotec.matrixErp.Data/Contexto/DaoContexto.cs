@@ -14,7 +14,7 @@ namespace lemosinfotec.matrixErp.Data.Contexto
         {
             try
             {
-                string strConnection = string.Format(@"workstation id=DbLemos.mssql.somee.com;packet size=4096;user id=edylemos_SQLLogin_1;pwd=nsytnrghhk;data source=DbLemos.mssql.somee.com;persist security info=False;initial catalog=DbLemos");
+                string strConnection = string.Format(@"string-conexao");
                 con = new SqlConnection(strConnection);
                 if(con.State == ConnectionState.Closed)
                 {
